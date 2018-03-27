@@ -16,7 +16,7 @@
   "files": [
     "./ts/index.ts",
     "./ts/hidden.ts",
-    "./ts/decl.ts",
+    "./ts/config-decl.ts",
     "./ts/prepare-hidden-code.ts",
     "./ts/test/app.ts",
     "./ts/test/config.ts"

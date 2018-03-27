@@ -1,4 +1,4 @@
-import * as decl from "../decl";
+import * as decl from "../config-decl";
 
 defineComputedColumns({
 	"sinOfAngle": "Math.sin(${angle})",
