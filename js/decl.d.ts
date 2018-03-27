@@ -1,4 +1,6 @@
 declare global  {
-    function defineComputedColumns(formulas: any): string;
+    function defineComputedColumns(formulas: {
+        [computedColumn: string]: string;
+    }): void;
 }
 export {  };
