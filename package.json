@@ -1,0 +1,24 @@
+{
+  "name": "computed-columns",
+  "version": "1.0.0",
+  "description": "Computed Columns Library",
+  "main": "./js/index.js",
+  "typings": "./js/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "node ./js/prepare-hidden-code.js",
+    "test": "node ./js/test/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wchang28/computed-columns.git"
+  },
+  "author": "Wen Chang",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^9.6.0"
+  },
+  "devDependencies": {
+    "typescript": "^2.7.1"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+      "target": "es5",
+      "module": "commonjs",
+      "jsx": "react",
+      "sourceMap": true,
+      "declaration": true,
+      "outDir": "./js",
+      "watch": false,
+      "lib": [
+        "es2017",
+        "dom",
+        "dom.iterable"
+      ]
+  },
+  "files": [
+    "./ts/index.ts",
+    "./ts/hidden.ts",
+    "./ts/prepare-hidden-code.ts",
+    "./ts/test/app.ts",
+    "./ts/test/config.ts"
+  ]
+}
