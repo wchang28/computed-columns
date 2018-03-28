@@ -2,33 +2,35 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var __formulas__4ad69c81c4424d278ff43b0d010b2520 = {};
 function defineComputedColumns(formulas) { __formulas__4ad69c81c4424d278ff43b0d010b2520 = formulas; }
-function __execute__f94410efbc414b4898d0e3ada50818e7(inputColumns) {
-    var __dependencies__ = {};
-    var columnValues = {};
-    function getDependenciesInFormula(formula) {
+function __recalc__f94410efbc414b4898d0e3ada50818e7(inputColumns) {
+    var __dependencies__397ded04c7d347ceb3f59418bff0b6c7 = {};
+    var __columnValues__16965a9b9d504b30ae0298afa9c3ba90 = {};
+    function __getDependenciesInFormula__cd4e032147e0400e90680274592a8819(formula) {
         var m = formula.match(/\$\{[a-zA-Z_$][a-zA-Z_$0-9]*\}/g);
         var fieldsMap = {};
-        for (var i in m) {
-            var s = m[i];
-            var field = s.replace(/\$\{/g, "").replace(/\}/g, "");
-            fieldsMap[field] = true;
+        if (m) {
+            for (var i in m) {
+                var s = m[i];
+                var field = s.replace(/\$\{/g, "").replace(/\}/g, "");
+                fieldsMap[field] = true;
+            }
         }
         var ret = [];
         for (var field in fieldsMap)
             ret.push(field);
         return ret;
     }
-    function computeColumn(computedColumn) {
-        var dependencyColumns = __dependencies__[computedColumn];
+    function __computeColumn__309e988cbc7246e78e08930d81d5dfec(computedColumn) {
+        var dependencyColumns = __dependencies__397ded04c7d347ceb3f59418bff0b6c7[computedColumn];
         for (var _i = 0, dependencyColumns_1 = dependencyColumns; _i < dependencyColumns_1.length; _i++) {
             var column = dependencyColumns_1[_i];
-            if (typeof columnValues[column] === "undefined") {
+            if (typeof __columnValues__16965a9b9d504b30ae0298afa9c3ba90[column] === "undefined") {
                 var columnIsComputedColumn = (typeof __formulas__4ad69c81c4424d278ff43b0d010b2520[column] !== "undefined");
                 if (columnIsComputedColumn) {
-                    computeColumn(column);
+                    __computeColumn__309e988cbc7246e78e08930d81d5dfec(column);
                 }
                 else {
-                    columnValues[column] = inputColumns[column];
+                    __columnValues__16965a9b9d504b30ae0298afa9c3ba90[column] = inputColumns[column];
                 }
             }
         }
@@ -38,27 +40,27 @@ function __execute__f94410efbc414b4898d0e3ada50818e7(inputColumns) {
             var column = dependencyColumns_2[_a];
             var search = "${" + column + "}";
             //console.log("search=" + search);
-            var replacement = "(columnValues[\"" + column + "\"])";
+            var replacement = "(__columnValues__16965a9b9d504b30ae0298afa9c3ba90[\"" + column + "\"])";
             formula = formula.split(search).join(replacement);
         }
-        var evalString = "columnValues[\"" + computedColumn + "\"] = " + formula + ";";
+        var evalString = "__columnValues__16965a9b9d504b30ae0298afa9c3ba90[\"" + computedColumn + "\"] = " + formula + ";";
         //console.log(`evalString=${evalString}`);
         eval(evalString);
     }
     for (var computedColumn in __formulas__4ad69c81c4424d278ff43b0d010b2520) {
         var formula = __formulas__4ad69c81c4424d278ff43b0d010b2520[computedColumn];
-        __dependencies__[computedColumn] = getDependenciesInFormula(formula);
+        __dependencies__397ded04c7d347ceb3f59418bff0b6c7[computedColumn] = __getDependenciesInFormula__cd4e032147e0400e90680274592a8819(formula);
     }
-    //console.log(JSON.stringify(__dependencies__, null, 2));	
+    //console.log(JSON.stringify(__dependencies__397ded04c7d347ceb3f59418bff0b6c7, null, 2));	
     for (var computedColumn in __formulas__4ad69c81c4424d278ff43b0d010b2520) {
-        if (typeof columnValues[computedColumn] === "undefined") {
-            computeColumn(computedColumn);
+        if (typeof __columnValues__16965a9b9d504b30ae0298afa9c3ba90[computedColumn] === "undefined") {
+            __computeColumn__309e988cbc7246e78e08930d81d5dfec(computedColumn);
         }
     }
-    //console.log(JSON.stringify(columnValues, null, 2));
+    //console.log(JSON.stringify(__columnValues__16965a9b9d504b30ae0298afa9c3ba90, null, 2));
     var ret = {};
     for (var computedColumn in __formulas__4ad69c81c4424d278ff43b0d010b2520) {
-        ret[computedColumn] = columnValues[computedColumn];
+        ret[computedColumn] = __columnValues__16965a9b9d504b30ae0298afa9c3ba90[computedColumn];
     }
     //console.log(JSON.stringify(ret, null, 2));
     return ret;
