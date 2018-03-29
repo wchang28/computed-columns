@@ -2,11 +2,32 @@ import {ColumnData, Formulas} from "./";
 
 let __formulas__4ad69c81c4424d278ff43b0d010b2520: Formulas = {};
 function defineComputedColumns(formulas: Formulas) {__formulas__4ad69c81c4424d278ff43b0d010b2520 = formulas;}
+function ZERO_IF_NAN(n: number): number { return (typeof n === "number" ? n : 0);}
+function SUM(...values: number[]): number {
+    let sum = 0;
+    for (let i in values) {
+        if (typeof values[i] === "number") {
+            sum += values[i];
+        }
+    }
+    return sum;
+}
+function AVERAGE(...values: number[]): number {
+    let sum = 0;
+    let count = 0;
+    for (let i in values) {
+        if (typeof values[i] === "number") {
+            sum += values[i];
+            count++;
+        }
+    }
+    return (count> 0 ? sum/count : null);
+}
 function __recalc__f94410efbc414b4898d0e3ada50818e7(inputColumns: ColumnData): ColumnData {
     let __dependencies__397ded04c7d347ceb3f59418bff0b6c7: {[computedColumn: string]: string[]} = {};
     let __columnValues__16965a9b9d504b30ae0298afa9c3ba90: ColumnData = {};
     function __getDependenciesInFormula__cd4e032147e0400e90680274592a8819(formula: string): string[] {
-        let m = formula.match(/\$\{[a-zA-Z_$][a-zA-Z_$0-9]*\}/g);
+        let m = formula.match(/\$\{[a-zA-Z_$][a-zA-Z_$.0-9]*\}/g);
         let fieldsMap: {[field: string]: boolean} = {};
         if (m) {
             for (let i in m) {
@@ -42,7 +63,13 @@ function __recalc__f94410efbc414b4898d0e3ada50818e7(inputColumns: ColumnData): C
         }
         let evalString = "__columnValues__16965a9b9d504b30ae0298afa9c3ba90[\"" + computedColumn + "\"] = " + formula + ";";
         //console.log(`evalString=${evalString}`);
-        eval(evalString);
+        try {
+            eval(evalString);
+        } catch(e) {
+            let formula = __formulas__4ad69c81c4424d278ff43b0d010b2520[computedColumn];
+            let errMsg = `error evaluating formula "${formula}": error=\n${typeof e === "string" ? e : JSON.stringify(e, null, 2)}`;
+            throw errMsg;
+        }
     }
     for (let computedColumn in __formulas__4ad69c81c4424d278ff43b0d010b2520) {
         let formula = __formulas__4ad69c81c4424d278ff43b0d010b2520[computedColumn];

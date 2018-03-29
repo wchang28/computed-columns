@@ -2,11 +2,40 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var __formulas__4ad69c81c4424d278ff43b0d010b2520 = {};
 function defineComputedColumns(formulas) { __formulas__4ad69c81c4424d278ff43b0d010b2520 = formulas; }
+function ZERO_IF_NAN(n) { return (typeof n === "number" ? n : 0); }
+function SUM() {
+    var values = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        values[_i] = arguments[_i];
+    }
+    var sum = 0;
+    for (var i in values) {
+        if (typeof values[i] === "number") {
+            sum += values[i];
+        }
+    }
+    return sum;
+}
+function AVERAGE() {
+    var values = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        values[_i] = arguments[_i];
+    }
+    var sum = 0;
+    var count = 0;
+    for (var i in values) {
+        if (typeof values[i] === "number") {
+            sum += values[i];
+            count++;
+        }
+    }
+    return (count > 0 ? sum / count : null);
+}
 function __recalc__f94410efbc414b4898d0e3ada50818e7(inputColumns) {
     var __dependencies__397ded04c7d347ceb3f59418bff0b6c7 = {};
     var __columnValues__16965a9b9d504b30ae0298afa9c3ba90 = {};
     function __getDependenciesInFormula__cd4e032147e0400e90680274592a8819(formula) {
-        var m = formula.match(/\$\{[a-zA-Z_$][a-zA-Z_$0-9]*\}/g);
+        var m = formula.match(/\$\{[a-zA-Z_$][a-zA-Z_$.0-9]*\}/g);
         var fieldsMap = {};
         if (m) {
             for (var i in m) {
@@ -45,7 +74,14 @@ function __recalc__f94410efbc414b4898d0e3ada50818e7(inputColumns) {
         }
         var evalString = "__columnValues__16965a9b9d504b30ae0298afa9c3ba90[\"" + computedColumn + "\"] = " + formula + ";";
         //console.log(`evalString=${evalString}`);
-        eval(evalString);
+        try {
+            eval(evalString);
+        }
+        catch (e) {
+            var formula_1 = __formulas__4ad69c81c4424d278ff43b0d010b2520[computedColumn];
+            var errMsg = "error evaluating formula \"" + formula_1 + "\": error=\n" + (typeof e === "string" ? e : JSON.stringify(e, null, 2));
+            throw errMsg;
+        }
     }
     for (var computedColumn in __formulas__4ad69c81c4424d278ff43b0d010b2520) {
         var formula = __formulas__4ad69c81c4424d278ff43b0d010b2520[computedColumn];
