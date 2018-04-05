@@ -112,11 +112,7 @@ export class ComputedColumns {
     }
 
     compute(inputColumns: ColumnData, includeInput: boolean = false): ColumnData {
-        let jsCode = hiddenCode;
-        jsCode += "\n";
-        jsCode += this.formulaScript;
-        jsCode += "\n";
-        jsCode += '__recalc__f94410efbc414b4898d0e3ada50818e7(' + JSON.stringify(inputColumns) + ')';
+        let jsCode = `${hiddenCode}\n${this.formulaScript}\n__recalc__f94410efbc414b4898d0e3ada50818e7(${JSON.stringify(inputColumns)})`;
         let ret: ColumnData = eval(jsCode);
         if (includeInput) {
             for (let column in inputColumns) {

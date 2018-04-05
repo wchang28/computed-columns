@@ -111,11 +111,7 @@ var ComputedColumns = /** @class */ (function () {
     }
     ComputedColumns.prototype.compute = function (inputColumns, includeInput) {
         if (includeInput === void 0) { includeInput = false; }
-        var jsCode = hiddenCode;
-        jsCode += "\n";
-        jsCode += this.formulaScript;
-        jsCode += "\n";
-        jsCode += '__recalc__f94410efbc414b4898d0e3ada50818e7(' + JSON.stringify(inputColumns) + ')';
+        var jsCode = hiddenCode + "\n" + this.formulaScript + "\n__recalc__f94410efbc414b4898d0e3ada50818e7(" + JSON.stringify(inputColumns) + ")";
         var ret = eval(jsCode);
         if (includeInput) {
             for (var column in inputColumns) {
