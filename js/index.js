@@ -109,14 +109,20 @@ var ComputedColumns = /** @class */ (function () {
     function ComputedColumns(formulaScript) {
         this.formulaScript = formulaScript;
     }
-    ComputedColumns.prototype.compute = function (inputColumns) {
+    ComputedColumns.prototype.compute = function (inputColumns, includeInput) {
+        if (includeInput === void 0) { includeInput = false; }
         var jsCode = hiddenCode;
         jsCode += "\n";
         jsCode += this.formulaScript;
         jsCode += "\n";
         jsCode += '__recalc__f94410efbc414b4898d0e3ada50818e7(' + JSON.stringify(inputColumns) + ')';
-        var computedColumns = eval(jsCode);
-        return computedColumns;
+        var ret = eval(jsCode);
+        if (includeInput) {
+            for (var column in inputColumns) {
+                ret[column] = inputColumns[column];
+            }
+        }
+        return ret;
     };
     return ComputedColumns;
 }());

@@ -111,13 +111,18 @@ export class ComputedColumns {
     constructor(private formulaScript: string) {
     }
 
-    compute(inputColumns: ColumnData): ColumnData {
+    compute(inputColumns: ColumnData, includeInput: boolean = false): ColumnData {
         let jsCode = hiddenCode;
         jsCode += "\n";
         jsCode += this.formulaScript;
         jsCode += "\n";
         jsCode += '__recalc__f94410efbc414b4898d0e3ada50818e7(' + JSON.stringify(inputColumns) + ')';
-        let computedColumns: ColumnData = eval(jsCode);
-        return computedColumns;
+        let ret: ColumnData = eval(jsCode);
+        if (includeInput) {
+            for (let column in inputColumns) {
+                ret[column] = inputColumns[column];
+            }
+        }
+        return ret;
     }
 }

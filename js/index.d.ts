@@ -7,5 +7,5 @@ export declare type Formulas = {
 export declare class ComputedColumns {
     private formulaScript;
     constructor(formulaScript: string);
-    compute(inputColumns: ColumnData): ColumnData;
+    compute(inputColumns: ColumnData, includeInput?: boolean): ColumnData;
 }
