@@ -31,6 +31,21 @@ function AVERAGE() {
     }
     return (count > 0 ? sum / count : null);
 }
+function MIN() {
+    var values = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        values[_i] = arguments[_i];
+    }
+    return Math.min.apply(Math, values);
+}
+function MAX() {
+    var values = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        values[_i] = arguments[_i];
+    }
+    return Math.max.apply(Math, values);
+}
+function IF(expression, valueIfTrue, valueIfFalse) { return (expression ? valueIfTrue : valueIfFalse); }
 function __recalc__f94410efbc414b4898d0e3ada50818e7(inputColumns) {
     var __dependencies__397ded04c7d347ceb3f59418bff0b6c7 = {};
     var __columnValues__16965a9b9d504b30ae0298afa9c3ba90 = {};

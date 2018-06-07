@@ -23,6 +23,9 @@ function AVERAGE(...values: number[]): number {
     }
     return (count> 0 ? sum/count : null);
 }
+function MIN(...values: number[]): number { return Math.min(...values); }
+function MAX(...values: number[]): number { return Math.max(...values); }
+function IF(expression: boolean, valueIfTrue: any, valueIfFalse: any): any { return (expression ? valueIfTrue : valueIfFalse); }
 function __recalc__f94410efbc414b4898d0e3ada50818e7(inputColumns: ColumnData): ColumnData {
     let __dependencies__397ded04c7d347ceb3f59418bff0b6c7: {[computedColumn: string]: string[]} = {};
     let __columnValues__16965a9b9d504b30ae0298afa9c3ba90: ColumnData = {};
