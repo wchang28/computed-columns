@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var cc = require("../");
 var fs = require("fs");
 var path = require("path");
-var formulaScript = fs.readFileSync(path.resolve(__dirname, "./config.js"), "utf8");
+var formulaScript = fs.readFileSync(path.resolve(__dirname, "./formula.js"), "utf8");
 //console.log(formulaScript);
 var inputColumns = {
     firstName: "John",

@@ -23,4 +23,4 @@ function makePeople(name, age) {
 function makeFullPeople(people, sex, goodGuy) {
     return people + ", sex=" + sex + ", goodGuy=" + goodGuy;
 }
-//# sourceMappingURL=config.js.map
+//# sourceMappingURL=formula.js.map

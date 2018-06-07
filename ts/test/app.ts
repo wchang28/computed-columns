@@ -2,7 +2,7 @@ import * as cc from "../";
 import * as fs from "fs";
 import * as path from "path";
 
-let formulaScript = fs.readFileSync(path.resolve(__dirname, "./config.js"), "utf8");
+let formulaScript = fs.readFileSync(path.resolve(__dirname, "./formula.js"), "utf8");
 
 //console.log(formulaScript);
 
