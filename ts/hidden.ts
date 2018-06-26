@@ -2,10 +2,26 @@ import {ColumnData, Formulas} from "./";
 
 let __formulas__4ad69c81c4424d278ff43b0d010b2520: Formulas = {};
 function defineComputedColumns(formulas: Formulas) {__formulas__4ad69c81c4424d278ff43b0d010b2520 = formulas;}
-function ISNUMBER(n: any): boolean {return (typeof n === "number");}
-function ISLOGICAL(n: any): boolean {return (typeof n === "boolean");}
-function ISTEXT(n: any): boolean {return (typeof n === "string");}
-function ZERO_IF_NAN(n: number): number { return (typeof n === "number" ? n : 0);}
+function ISNUMBER(v: any): boolean {return (typeof v === "number");}
+function ISLOGICAL(v: any): boolean {return (typeof v === "boolean");}
+function ISTEXT(v: any): boolean {return (typeof v === "string");}
+function ZERO_IF_NAN(v: any): number { return (typeof v === "number" ? v : 0);}
+function AND(...logicals: boolean[]): boolean {
+    for (let i in logicals) {
+        if (!logicals[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+function OR(...logicals: boolean[]): boolean {
+    for (let i in logicals) {
+        if (logicals[i]) {
+            return true;
+        }
+    }
+    return false;
+}
 function SUM(...values: number[]): number {
     let sum = 0;
     for (let i in values) {

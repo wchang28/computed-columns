@@ -18,7 +18,11 @@ defineComputedColumns({
     "testIsLogical": 'ISLOGICAL(${boolean_doesnt_exist})',
     "testIsLogical2": 'ISLOGICAL(5 > 2)',
     "testIsText": 'ISTEXT(${string_doesnt_exist})',
-    "testIsText2": 'ISTEXT(${people})'
+    "testIsText2": 'ISTEXT(${people})',
+    "testAND": 'AND(true, true)',
+    "testAND2": 'AND(true, false, true)',
+    "testOR": 'OR(false, false)',
+    "testOR2": 'OR(false, false, true)' // true
 });
 function fullName(firstName, lastName) {
     return firstName + " " + lastName;

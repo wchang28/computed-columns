@@ -1,9 +1,11 @@
 declare global {
     function defineComputedColumns(formulas: {[computedColumn: string]: string}): void;
-    function ISNUMBER(n: any): boolean;
-    function ISLOGICAL(n: any): boolean;
-    function ISTEXT(n: any): boolean;
-    function ZERO_IF_NAN(n: number): number;
+    function ISNUMBER(v: any): boolean;
+    function ISLOGICAL(v: any): boolean;
+    function ISTEXT(v: any): boolean;
+    function ZERO_IF_NAN(v: any): number;
+    function AND(...logicals: boolean[]): boolean;
+    function OR(...logicals: boolean[]): boolean;
     function SUM(...values: number[]): number;
     function AVERAGE(...values: number[]): number;
     function MIN(...values: number[]): number;
