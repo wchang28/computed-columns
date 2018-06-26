@@ -13,7 +13,12 @@ defineComputedColumns({
 	"testMinOf": "MIN(2, 6, 7, 4)",
 	"testIf": 'IF(${year}>2015, "new", "old")',
 	"boyOrGirl": 'IF(${sex} === "Male", "It is a boy", "It is a girl")',
-	"testNumberic": 'ISNUMBER(${number_doesnt_exist})'
+	"testNumeric": 'ISNUMBER(${number_doesnt_exist})',
+	"testNumeric2": 'ISNUMBER(SUM(7, 3, 5, 4, 7))',
+	"testIsLogical": 'ISLOGICAL(${boolean_doesnt_exist})',
+	"testIsLogical2": 'ISLOGICAL(5 > 2)',
+	"testIsText": 'ISTEXT(${string_doesnt_exist})',
+	"testIsText2": 'ISTEXT(${people})'
 });
 
 function fullName(firstName: string, lastName: string): string {

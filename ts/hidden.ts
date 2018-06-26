@@ -3,6 +3,8 @@ import {ColumnData, Formulas} from "./";
 let __formulas__4ad69c81c4424d278ff43b0d010b2520: Formulas = {};
 function defineComputedColumns(formulas: Formulas) {__formulas__4ad69c81c4424d278ff43b0d010b2520 = formulas;}
 function ISNUMBER(n: any): boolean {return (typeof n === "number");}
+function ISLOGICAL(n: any): boolean {return (typeof n === "boolean");}
+function ISTEXT(n: any): boolean {return (typeof n === "string");}
 function ZERO_IF_NAN(n: number): number { return (typeof n === "number" ? n : 0);}
 function SUM(...values: number[]): number {
     let sum = 0;
