@@ -12,7 +12,8 @@ defineComputedColumns({
     "testMaxOf": "MAX(null, 2, 3)",
     "testMinOf": "MIN(2, 6, 7, 4)",
     "testIf": 'IF(${year}>2015, "new", "old")',
-    "boyOrGirl": 'IF(${sex} === "Male", "It is a boy", "It is a girl")'
+    "boyOrGirl": 'IF(${sex} === "Male", "It is a boy", "It is a girl")',
+    "testNumberic": 'ISNUMBER(${number_doesnt_exist})'
 });
 function fullName(firstName, lastName) {
     return firstName + " " + lastName;

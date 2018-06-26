@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var __formulas__4ad69c81c4424d278ff43b0d010b2520 = {};
 function defineComputedColumns(formulas) { __formulas__4ad69c81c4424d278ff43b0d010b2520 = formulas; }
+function ISNUMBER(n) { return (typeof n === "number"); }
 function ZERO_IF_NAN(n) { return (typeof n === "number" ? n : 0); }
 function SUM() {
     var values = [];

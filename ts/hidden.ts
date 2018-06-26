@@ -2,6 +2,7 @@ import {ColumnData, Formulas} from "./";
 
 let __formulas__4ad69c81c4424d278ff43b0d010b2520: Formulas = {};
 function defineComputedColumns(formulas: Formulas) {__formulas__4ad69c81c4424d278ff43b0d010b2520 = formulas;}
+function ISNUMBER(n: any): boolean {return (typeof n === "number");}
 function ZERO_IF_NAN(n: number): number { return (typeof n === "number" ? n : 0);}
 function SUM(...values: number[]): number {
     let sum = 0;
