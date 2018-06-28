@@ -33,6 +33,13 @@ function OR() {
     return false;
 }
 function NOT(expression) { return (!expression ? true : false); }
+function ARRAY() {
+    var values = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        values[_i] = arguments[_i];
+    }
+    return values;
+}
 function SUM() {
     var values = [];
     for (var _i = 0; _i < arguments.length; _i++) {
@@ -82,6 +89,20 @@ function DATE(year, month, day) { return new Date(year, month - 1, day); }
 function YEAR(dt) { return (typeof dt.getMonth === 'function' ? dt.getFullYear() : (typeof dt === "number" ? new Date(dt).getFullYear() : null)); }
 function MONTH(dt) { return (typeof dt.getMonth === 'function' ? dt.getMonth() + 1 : (typeof dt === "number" ? new Date(dt).getMonth() + 1 : null)); }
 function DAY(dt) { return (typeof dt.getMonth === 'function' ? dt.getDate() : (typeof dt === "number" ? new Date(dt).getDate() : null)); }
+function VLOOKUP(value, table, col_index, match) {
+    if (match === void 0) { match = false; }
+    if (!table && col_index < 1) {
+        return undefined;
+    }
+    else {
+        for (var i in table) {
+            var row = table[i];
+            if (row.length >= 1 && col_index <= row.length && row[0] == value)
+                return row[col_index - 1];
+        }
+        return undefined;
+    }
+}
 function __recalc__f94410efbc414b4898d0e3ada50818e7(inputColumns) {
     var __dependencies__397ded04c7d347ceb3f59418bff0b6c7 = {};
     var __columnValues__16965a9b9d504b30ae0298afa9c3ba90 = {};

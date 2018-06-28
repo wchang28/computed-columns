@@ -11,6 +11,7 @@ declare global  {
     function AND(...logicals: boolean[]): boolean;
     function OR(...logicals: boolean[]): boolean;
     function NOT(expression: boolean): boolean;
+    function ARRAY(...values: any[]): any[];
     function SUM(...values: number[]): number;
     function AVERAGE(...values: number[]): number;
     function MIN(...values: number[]): number;
@@ -22,5 +23,6 @@ declare global  {
     function YEAR(dt: Date): number;
     function MONTH(dt: Date): number;
     function DAY(dt: Date): number;
+    function VLOOKUP(value: any, table: any[][], col_index: number, match?: boolean): any;
 }
 export {  };

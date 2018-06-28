@@ -34,7 +34,12 @@ defineComputedColumns({
     "notTest3": 'NOT(1)',
     "notTest4": 'NOT(2)',
     "notTest5": 'NOT(0)',
-    "notTest6": 'NOT(TODAY())' // false
+    "notTest6": 'NOT(TODAY())',
+    "avg_Male": '["Male", 78]',
+    "avg_Female": '["Female", 80]',
+    "avg_Sexes": 'ARRAY(${avg_Male}, ${avg_Female})',
+    "avgLifeExp": 'VLOOKUP(${sex}, ${avg_Sexes}, 2, false)',
+    "transgengerNA": 'ISNA(VLOOKUP("Transgender", ${avg_Sexes}, 2, false))',
 });
 function fullName(firstName, lastName) {
     return firstName + " " + lastName;

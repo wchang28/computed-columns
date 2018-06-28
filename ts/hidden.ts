@@ -25,6 +25,7 @@ function OR(...logicals: boolean[]): boolean {
     return false;
 }
 function NOT(expression: boolean): boolean {return (!expression ? true : false);}
+function ARRAY(...values: any[]): any[] {return values;}
 function SUM(...values: number[]): number {
     let sum = 0;
     for (let i in values) {
@@ -52,8 +53,20 @@ function NOW(): Date {return new Date();}
 function TODAY(): Date {return new Date(new Date().setHours(0,0,0,0));}
 function DATE(year: number, month: number, day?: number): Date {return new Date(year, month-1, day);}
 function YEAR(dt: Date): number {return (typeof dt.getMonth === 'function' ? dt.getFullYear() : (typeof dt === "number" ? new Date(dt).getFullYear(): null));}
-function MONTH(dt: Date): number {return (typeof dt.getMonth === 'function' ? dt.getMonth()+1 : (typeof dt === "number" ? new Date(dt).getMonth()+1: null));} 
-function DAY(dt: Date): number {return (typeof dt.getMonth === 'function' ? dt.getDate() : (typeof dt === "number" ? new Date(dt).getDate(): null));} 
+function MONTH(dt: Date): number {return (typeof dt.getMonth === 'function' ? dt.getMonth()+1 : (typeof dt === "number" ? new Date(dt).getMonth()+1: null));}
+function DAY(dt: Date): number {return (typeof dt.getMonth === 'function' ? dt.getDate() : (typeof dt === "number" ? new Date(dt).getDate(): null));}
+function VLOOKUP(value: any, table: any[][], col_index: number, match: boolean = false): any {
+    if (!table && col_index < 1) {
+        return undefined;
+    } else {
+        for (let i in table) {    // for each row
+            let row = table[i];
+            if (row.length >= 1 && col_index <= row.length && row[0] == value)
+                return row[col_index-1];
+        }
+        return undefined;
+    }
+}
 function __recalc__f94410efbc414b4898d0e3ada50818e7(inputColumns: ColumnData): ColumnData {
     let __dependencies__397ded04c7d347ceb3f59418bff0b6c7: {[computedColumn: string]: string[]} = {};
     let __columnValues__16965a9b9d504b30ae0298afa9c3ba90: ColumnData = {};
