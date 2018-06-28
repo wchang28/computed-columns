@@ -6,6 +6,8 @@ function ISNUMBER(v) { return (typeof v === "number"); }
 function ISLOGICAL(v) { return (typeof v === "boolean"); }
 function ISTEXT(v) { return (typeof v === "string"); }
 function ZERO_IF_NAN(v) { return (typeof v === "number" ? v : 0); }
+function NA() { return undefined; }
+function ISNA(v) { return (typeof v === "undefined"); }
 function AND() {
     var logicals = [];
     for (var _i = 0; _i < arguments.length; _i++) {
@@ -30,6 +32,7 @@ function OR() {
     }
     return false;
 }
+function NOT(expression) { return (!expression ? true : false); }
 function SUM() {
     var values = [];
     for (var _i = 0; _i < arguments.length; _i++) {
@@ -73,6 +76,12 @@ function MAX() {
     return Math.max.apply(Math, values);
 }
 function IF(expression, valueIfTrue, valueIfFalse) { return (expression ? valueIfTrue : valueIfFalse); }
+function NOW() { return new Date(); }
+function TODAY() { return new Date(new Date().setHours(0, 0, 0, 0)); }
+function DATE(year, month, day) { return new Date(year, month - 1, day); }
+function YEAR(dt) { return (typeof dt.getMonth === 'function' ? dt.getFullYear() : (typeof dt === "number" ? new Date(dt).getFullYear() : null)); }
+function MONTH(dt) { return (typeof dt.getMonth === 'function' ? dt.getMonth() + 1 : (typeof dt === "number" ? new Date(dt).getMonth() + 1 : null)); }
+function DAY(dt) { return (typeof dt.getMonth === 'function' ? dt.getDate() : (typeof dt === "number" ? new Date(dt).getDate() : null)); }
 function __recalc__f94410efbc414b4898d0e3ada50818e7(inputColumns) {
     var __dependencies__397ded04c7d347ceb3f59418bff0b6c7 = {};
     var __columnValues__16965a9b9d504b30ae0298afa9c3ba90 = {};

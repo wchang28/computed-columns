@@ -5,7 +5,6 @@ defineComputedColumns({
     "people": "makePeople(${name}.toUpperCase(), ${age})",
     "name": "fullName(${firstName}, ${lastName})",
     "fullPeople": "'Hi: ' + makeFullPeople(${people}, ${sex}.toLowerCase(), ${goodGuy})",
-    "year": "2000 + 18",
     "angle": "30 + 15",
     "testSum": "SUM(7, 3, 5, 4, 7)",
     "testAvg": "AVERAGE(7, 3, 5, 4, 7)",
@@ -22,7 +21,20 @@ defineComputedColumns({
     "testAND": 'AND(true, true)',
     "testAND2": 'AND(true, false, true)',
     "testOR": 'OR(false, false)',
-    "testOR2": 'OR(false, false, true)' // true
+    "testOR2": 'OR(false, false, true)',
+    "today": 'TODAY()',
+    "year": 'YEAR(${today})',
+    "month": 'MONTH(${today})',
+    "dayOfMonth": 'DAY(${today})',
+    "dateTest": 'DATE(${year}, ${month}, ${dayOfMonth})',
+    "naTest1": 'ISNA(NA())',
+    "naTest2": 'ISNA(TODAY())',
+    "notTest1": 'NOT(true)',
+    "notTest2": 'NOT(false)',
+    "notTest3": 'NOT(1)',
+    "notTest4": 'NOT(2)',
+    "notTest5": 'NOT(0)',
+    "notTest6": 'NOT(TODAY())' // false
 });
 function fullName(firstName, lastName) {
     return firstName + " " + lastName;

@@ -6,6 +6,8 @@ function ISNUMBER(v: any): boolean {return (typeof v === "number");}
 function ISLOGICAL(v: any): boolean {return (typeof v === "boolean");}
 function ISTEXT(v: any): boolean {return (typeof v === "string");}
 function ZERO_IF_NAN(v: any): number { return (typeof v === "number" ? v : 0);}
+function NA(): any {return undefined;}
+function ISNA(v: any): boolean {return (typeof v === "undefined");} 
 function AND(...logicals: boolean[]): boolean {
     for (let i in logicals) {
         if (!logicals[i]) {
@@ -22,6 +24,7 @@ function OR(...logicals: boolean[]): boolean {
     }
     return false;
 }
+function NOT(expression: boolean): boolean {return (!expression ? true : false);}
 function SUM(...values: number[]): number {
     let sum = 0;
     for (let i in values) {
@@ -45,6 +48,12 @@ function AVERAGE(...values: number[]): number {
 function MIN(...values: number[]): number { return Math.min(...values); }
 function MAX(...values: number[]): number { return Math.max(...values); }
 function IF(expression: boolean, valueIfTrue: any, valueIfFalse: any): any { return (expression ? valueIfTrue : valueIfFalse); }
+function NOW(): Date {return new Date();}
+function TODAY(): Date {return new Date(new Date().setHours(0,0,0,0));}
+function DATE(year: number, month: number, day?: number): Date {return new Date(year, month-1, day);}
+function YEAR(dt: Date): number {return (typeof dt.getMonth === 'function' ? dt.getFullYear() : (typeof dt === "number" ? new Date(dt).getFullYear(): null));}
+function MONTH(dt: Date): number {return (typeof dt.getMonth === 'function' ? dt.getMonth()+1 : (typeof dt === "number" ? new Date(dt).getMonth()+1: null));} 
+function DAY(dt: Date): number {return (typeof dt.getMonth === 'function' ? dt.getDate() : (typeof dt === "number" ? new Date(dt).getDate(): null));} 
 function __recalc__f94410efbc414b4898d0e3ada50818e7(inputColumns: ColumnData): ColumnData {
     let __dependencies__397ded04c7d347ceb3f59418bff0b6c7: {[computedColumn: string]: string[]} = {};
     let __columnValues__16965a9b9d504b30ae0298afa9c3ba90: ColumnData = {};
