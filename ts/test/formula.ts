@@ -41,6 +41,9 @@ defineComputedColumns({
 	"avg_Sexes": 'ARRAY(${avg_Male}, ${avg_Female})',
 	"avgLifeExp": 'VLOOKUP(${sex}, ${avg_Sexes}, 2, false)',
 	"transgengerNA": 'ISNA(VLOOKUP("Transgender", ${avg_Sexes}, 2, false))',	// true
+	"testBlank1": 'ISBLANK(null)',	// true
+	"testBlank2": 'ISBLANK(NA())',	// true
+	"testBlank3": 'ISBLANK(${sex})'	// false
 });
 
 function fullName(firstName: string, lastName: string): string {

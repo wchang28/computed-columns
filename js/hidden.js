@@ -8,6 +8,7 @@ function ISTEXT(v) { return (typeof v === "string"); }
 function ZERO_IF_NAN(v) { return (typeof v === "number" ? v : 0); }
 function NA() { return undefined; }
 function ISNA(v) { return (typeof v === "undefined"); }
+function ISBLANK(v) { return (typeof v === "undefined" || v == null); }
 function AND() {
     var logicals = [];
     for (var _i = 0; _i < arguments.length; _i++) {

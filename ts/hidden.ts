@@ -7,7 +7,8 @@ function ISLOGICAL(v: any): boolean {return (typeof v === "boolean");}
 function ISTEXT(v: any): boolean {return (typeof v === "string");}
 function ZERO_IF_NAN(v: any): number { return (typeof v === "number" ? v : 0);}
 function NA(): any {return undefined;}
-function ISNA(v: any): boolean {return (typeof v === "undefined");} 
+function ISNA(v: any): boolean {return (typeof v === "undefined");}
+function ISBLANK(v: any): boolean {return (typeof v === "undefined" || v == null);}
 function AND(...logicals: boolean[]): boolean {
     for (let i in logicals) {
         if (!logicals[i]) {

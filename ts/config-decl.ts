@@ -6,6 +6,7 @@ declare global {
     function ZERO_IF_NAN(v: any): number;
     function NA(): any;
     function ISNA(v: any): boolean;
+    function ISBLANK(v: any): boolean;
     function AND(...logicals: boolean[]): boolean;
     function OR(...logicals: boolean[]): boolean;
     function NOT(expression: boolean): boolean;
