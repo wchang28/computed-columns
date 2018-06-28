@@ -27,6 +27,7 @@ defineComputedColumns({
 	"month": 'MONTH(${today})',
 	"dayOfMonth": 'DAY(${today})',
 	"dateTest": 'DATE(${year}, ${month}, ${dayOfMonth})',
+	"naTest0": 'ISNA(${variable_that_does_not_exist})',	// true
 	"naTest1": 'ISNA(NA())',	// true
 	"naTest2": 'ISNA(TODAY())',	// false
 	"notTest1": 'NOT(true)',	// false
